@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do List</title>
+    <script src="main.js"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+
+<body onload="initializer()">
+
+    <div id="container">
+        <div id="header">
+            <h1>To do List</h1>
+        </div>
+        <div id="inputBox">
+            <form autocomplete="off" action="#">
+                <input id="textBox" type="text" placeholder="Type anything">
+                <button id="submitButton" type="button" onclick="addTask()">Add Task</button>
+                <button id="deleteButton" type="button" onclick="removeTask()">Remove selected items</button>
+                <button id="deleteAll" type="button" onclick="removeAll()">Remove all items</button>
+            </form>
+        </div>
+        <div id="tasks">
+            <ol id="taskList"></ol>
+        </div>
+    </div>
+
+</body>
+
+</html>

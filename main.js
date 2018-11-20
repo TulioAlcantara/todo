@@ -21,6 +21,7 @@ function createEditButton(newTask) {
     edit.textContent = "Edit";
     edit.setAttribute("type", "button");
     edit.setAttribute("class", "edt");
+    edit.setAttribute("class", "bubbly-button");
     newTask.appendChild(edit);
 
     //Event listener para quando o botão edit é clicado
@@ -42,7 +43,7 @@ function initializer() {
 function addTask() {
     //Node com a nova task (um li no caso)
     let newTask = document.createElement("li");
-    newTask.setAttribute("class", "txt");
+    newTask.setAttribute("class", "tsk");
     document.getElementById("taskList").appendChild(newTask);
 
     //Funções que criam botões adicionais
@@ -54,28 +55,15 @@ function addTask() {
 }
 
 function removeTask() { 
-    //Obtem todos os elementos caixa e texto
-    let boxes = document.getElementsByClassName('chk');
-    let texts = document.getElementsByClassName('txt');
-    let edits = document.getElementsByClassName('edt');
+    //all é a lista de todos os elementos li, ou seja, todas as taks
+    let all = document.getElementById("taskList").childNodes;
 
-    let tuples = [];
-    for (let i = 0; i < boxes.length; i++) {
-        tuples.push([texts[i], boxes[i], edits[i]]);
-    }
-
-    //Itera Pelas caixas, buscando as marcadas e deletando as mesmas
-    for (let i = 0; i < tuples.length; i++) {
-        let txt = tuples[i][0];
-        let box = tuples[i][1];
-        let edt = tuples[i][2];
-        if (box.checked == true) {
-            txt.parentElement.removeChild(txt);
-            box.parentElement.removeChild(box);
-            edt.parentElement.removeChild(edt);
+    //itero a partir do ultimo elemento de all, deletando todos os itens com checkbox marcada
+    for(i=all.length-1; i >=0; i--){
+        if(all[i].childNodes[1].checked){
+            all[i].parentElement.removeChild(all[i]);
         }
     }
-
 }
 
 function editTask(newTask, editButton) {
@@ -106,6 +94,7 @@ function editTask(newTask, editButton) {
             txt.parentNode.removeChild(txt);
             yes.parentNode.removeChild(yes);
             no.parentNode.removeChild(no);
+            createCheckBox(newTask);
             createEditButton(newTask);
         }
     })
@@ -116,6 +105,7 @@ function editTask(newTask, editButton) {
         txt.parentNode.removeChild(txt);
         yes.parentNode.removeChild(yes);
         no.parentNode.removeChild(no);
+        createCheckBox(newTask);
         createEditButton(newTask);
     })
 
@@ -124,6 +114,7 @@ function editTask(newTask, editButton) {
         txt.parentNode.removeChild(txt);
         yes.parentNode.removeChild(yes);
         no.parentNode.removeChild(no);
+        createCheckBox(newTask);
         createEditButton(newTask);
     })
 }
@@ -139,3 +130,23 @@ function removeAll() {
         document.getElementById("textBox").value = ""; //Deixa a textBox em branco 
     }
 }
+
+//------------------------------------------------------BUTTON ANIMATION---------------------------------------------------------------------------------------------------//
+
+var animateButton = function(e) {
+
+    e.preventDefault;
+    //reset animation
+    e.target.classList.remove('animate');
+    
+    e.target.classList.add('animate');
+    setTimeout(function(){
+      e.target.classList.remove('animate');
+    },700);
+  };
+  
+  var bubblyButtons = document.getElementsByClassName("bubbly-button");
+  
+  for (var i = 0; i < bubblyButtons.length; i++) {
+    bubblyButtons[i].addEventListener('click', animateButton, false);
+  }

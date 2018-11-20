@@ -7,7 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To do List</title>
     <script src="main.js"></script>
-    <link href="style.css" rel="stylesheet">
+    <link href="/stylesheet/style.css" type="text/css" rel="stylesheet">
+    <!--
+    PARA TESTAR DEPOIS QUE TERMINAR O CSS BÁSICO    
+    <link href="button.css" type="text/css" rel="stylesheet">
+    <link href="input.css" type="text/css" rel="stylesheet">-->
+    
 </head>
 
 
@@ -19,12 +24,22 @@
         </div>
         <div id="inputBox">
             <form autocomplete="off" action="#">
-                <input id="textBox" type="text" placeholder="Type anything">
-                <button id="submitButton" type="button" onclick="addTask()">Add Task</button>
-                <button id="deleteButton" type="button" onclick="removeTask()">Remove selected items</button>
-                <button id="deleteAll" type="button" onclick="removeAll()">Remove all items</button>
+
+                <div id="inputText">
+                    <span class="input">
+                        <input id="textBox" type="text" placeholder="Type anything">
+                        <span></span>	
+                    </span>
+                </div>
+
+                <div id="buttons"></div>
+                    <button id="submitButton" type="button" onclick="addTask()" class="bubbly-button">Add Task</button>
+                    <button id="deleteButton" type="button" onclick="removeTask()" class="bubbly-button">Remove selected items</button>
+                    <button id="deleteAll" type="button" onclick="removeAll()" class="bubbly-button">Remove all items</button>
+                </div>
             </form>
         </div>
+
         <div id="tasks">
             <ol id="taskList"></ol>
         </div>

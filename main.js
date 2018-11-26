@@ -44,6 +44,7 @@ function addTask() {
     //Node com a nova task (um li no caso)
     let newTask = document.createElement("li");
     newTask.setAttribute("class", "tsk");
+    newTask.setAttribute("class", "animated fadeIn faster")
     document.getElementById("taskList").appendChild(newTask);
 
     //Funções que criam botões adicionais
